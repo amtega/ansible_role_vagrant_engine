@@ -1,0 +1,11 @@
+---
+# Role handlers
+
+- name: restart libvirtd and polkit services
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+     - libvirtd
+     - polkit
+  become: True

@@ -1,0 +1,16 @@
+---
+# Role tasks
+
+- name: launch install tasks
+  include: tools/os_tasks.yml folder=install
+  static: false
+  tags:
+    - role::vagrant_engine
+    - role::vagrant_engine::install
+
+- name: launch configure tasks
+  include: tools/os_tasks.yml folder=configure
+  static: false
+  tags:
+    - role::vagrant_engine
+    - role::vagrant_engine::configure

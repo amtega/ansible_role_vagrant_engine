@@ -1,0 +1,7 @@
+---
+# Role default lower priority variables
+
+# List of users to add to vagrant group. This is usefull to allow concrete users
+# to manage vagrant without being root
+
+vagrant_engine_users: []

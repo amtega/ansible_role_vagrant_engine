@@ -1,0 +1,6 @@
+---
+# Role variables
+
+vagrant_engine_packages:
+- vagrant
+- vagrant-libvirt
