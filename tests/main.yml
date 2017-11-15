@@ -1,7 +1,7 @@
 ---
 # Tasks for tesing role
 
-- name: test vagrant_engine the role
+- name: test vagrant_engine role
   hosts: localhost
   tasks:
     - include_role:
