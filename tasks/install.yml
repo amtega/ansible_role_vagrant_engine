@@ -1,12 +1,11 @@
 ---
-# Install tasks for all operating systems
+# Install tasks
 
 - name: install vagrant packages
   package:
     name: "{{ item }}"
     state: present
-  with_items: >
-    {{ vagrant_engine_packages | default([]) }}
+  with_items: "{{ vagrant_engine_packages | default([]) }}"
   become: True
   tags:
     - role::vagrant_engine
