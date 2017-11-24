@@ -41,7 +41,7 @@ This is an example playbook:
 
 ```shell
 $ cd vagrant_engine/test
-$ ansible-playbook main.yml
+$ ansible-playbook main.yml --become
 ```
 
 ## License
