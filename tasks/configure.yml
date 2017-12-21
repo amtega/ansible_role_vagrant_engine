@@ -2,7 +2,6 @@
 # Configuration tasks
 
 - block:
-
   - name: setup vagrant group
     group:
       name: vagrant
@@ -25,7 +24,6 @@
   #   #idm139695093806512
 
   - name: allow vagrant group users to start and stop vagrant boxes
-    #
     template:
       src: 10-vagrant-libvirt.rules.j2
       dest: /etc/polkit-1/rules.d/10-vagrant-libvirt.rules

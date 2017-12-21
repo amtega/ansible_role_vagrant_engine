@@ -3,9 +3,8 @@
 
 - name: test vagrant_engine role
   hosts: localhost
-  tasks:
-    - include_role:
-        name: vagrant_engine
-      vars:
-        vagrant_engine_users:
-          - "{{ ansible_user_id }}"
+  vars:
+    vagrant_engine_users:
+      - "{{ ansible_user_id }}"
+  roles:
+    - amtega.vagrant_engine
