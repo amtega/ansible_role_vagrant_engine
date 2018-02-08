@@ -23,13 +23,13 @@ This is an example playbook:
 
 - hosts: all
   roles:
-    - vagrant_engine
+    - amtega.vagrant_engine
 ```
 
 ## Testing
 
 ```shell
-$ cd vagrant_engine/test
+$ cd amtega.vagrant_engine/test
 $ ansible-playbook main.yml --become
 ```
 
