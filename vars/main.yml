@@ -3,3 +3,6 @@
 
 vagrant_download_url: https://www.vagrantup.com/downloads.html
 vagrant_download_validate_certs: no
+
+vagrant_extra_packages:
+  - "@virtualization"
