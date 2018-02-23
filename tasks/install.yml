@@ -6,13 +6,13 @@
       package:
         name: "{{ item }}"
         state: present
-      with_items: "{{ vagrant_extra_packages }}"
+      with_items: "{{ vagrant_engine_extra_packages }}"
 
     - name: get vagrant lastest pacakges urls
       uri:
-        url: "{{ vagrant_download_url }}"
+        url: "{{ vagrant_engine_download_url }}"
         return_content: yes
-        validate_certs: "{{ vagrant_download_validate_certs }}"
+        validate_certs: "{{ vagrant_engine_download_validate_certs }}"
       register: get_latest_package_result
 
     - name: install vagrant packages
