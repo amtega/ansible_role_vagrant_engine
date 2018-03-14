@@ -4,7 +4,7 @@ This is an [Ansible](http://www.ansible.com) role to setup vagrant engine.
 
 ## Requirements
 
-- Ansible >= 2.4
+- [Ansible 2.4+](http://docs.ansible.com/ansible/latest/intro_installation.html)
 
 ## Role Variables
 
@@ -15,6 +15,13 @@ A list of all the default variables for this role is available in `defaults/main
 None.
 
 ## Example Playbook
+
+If you want a quick setup on your local machine you can use the `files/setup.yml` playbook:
+
+```shell
+$ cd amtega.docker_engine/files
+$ ansible-playbook setup.yml --become --ask-become-pass
+```
 
 This is an example playbook:
 
@@ -28,9 +35,13 @@ This is an example playbook:
 
 ## Testing
 
+Tests are based on vagrant virtual machines. You can setup vagrant engine quickly using the playbook `files/setup.yml`.
+
+Once you have vagrant, you can run the tests with the following commands:
+
 ```shell
-$ cd amtega.vagrant_engine/test
-$ ansible-playbook main.yml --become
+$ cd tests
+$ ansible-playbook main.yml
 ```
 
 ## License
@@ -52,3 +63,4 @@ GNU General Public License for more details or European Union Public License for
 ## Author Information
 
 - Daniel Sánchez Fábregas.
+- Juan Antonio Valiño García.
