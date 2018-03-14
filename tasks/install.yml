@@ -6,7 +6,11 @@
       package:
         name: "{{ item }}"
         state: present
-      with_items: "{{ vagrant_engine_extra_packages }}"
+      with_items: "{{ vagrant_engine_extra_packages[distro_packages_key] }}"
+      vars:
+        distro_packages_key: >-
+          {{ ansible_distribution
+             | lower + "_" + ansible_distribution_major_version }}
 
     - name: get vagrant lastest pacakges urls
       uri:

@@ -5,5 +5,36 @@ vagrant_engine_download_url: https://www.vagrantup.com/downloads.html
 vagrant_engine_download_validate_certs: no
 
 vagrant_engine_extra_packages:
-  - "@virtualization"
-  - libvirt-devel
+  centos_6:
+    - libvirt-devel
+    - polkit
+    - "@virtualization"
+
+  centos_7:
+    - libvirt-devel
+    - polkit
+    - "@virtualization-hypervisor"
+    - "@virtualization-tools"
+    - "@virtualization-platform"
+
+  fedora_26:
+    - libvirt-devel
+    - polkit
+    - "@virtualization"
+
+  fedora_27:
+    - libvirt-devel
+    - polkit
+    - "@virtualization"
+
+  rhel_6:
+    - libvirt-devel
+    - polkit
+    - "@virtualization"
+
+  rhel_7:
+    - libvirt-devel
+    - polkit
+    - "@virtualization-hypervisor"
+    - "@virtualization-tools"
+    - "@virtualization-platform"
