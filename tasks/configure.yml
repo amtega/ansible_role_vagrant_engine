@@ -29,11 +29,18 @@
     - name: allow vagrant group users to start and stop vagrant boxes
       template:
         src: 10-vagrant-libvirt.rules.j2
-        dest: /etc/polkit-1/rules.d/10-vagrant-libvirt.rules
+        dest: "{{ dest_dir }}/10-vagrant-libvirt.rules"
         owner: root
         group: root
         mode: 0644
         backup: yes
+      vars:
+        dest_dir: >-
+          {{ (ansible_distribution | lower in ["rhel", "centos"]
+              and ansible_distribution_major_version == "6")
+             | ternary(
+                 "/etc/polkit-1/localauthority.conf.d",
+                 "/etc/polkit-1/rules.d") }}
       notify:
         - restart libvirtd
         - restart polkit

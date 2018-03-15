@@ -2,7 +2,7 @@
 # Install tasks
 
 - block:
-    - name: install vagrant extra required packages
+    - name: install vagrant required packages
       package:
         name: "{{ item }}"
         state: present

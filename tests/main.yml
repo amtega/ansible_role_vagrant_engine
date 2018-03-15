@@ -16,9 +16,12 @@
         - root
         - "{{ ansible_user_id }}"
   tasks:
+    - meta: flush_handlers
+
     - name: get vagrant global status
       shell: vagrant global-status
       register: vagrant_status_result
+      changed_when: false
 
     - name: verify vagrant global status
       assert:
