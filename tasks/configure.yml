@@ -8,8 +8,9 @@
         state: present
         system: yes
       with_items:
-        - vagrant
         - libvirt
+        - qemu
+        - vagrant
 
     - name: add users to groups
       user:
@@ -18,7 +19,7 @@
         state: present
         name: '{{ item[1] }}'
       with_nested:
-        - [ vagrant, libvirt ]
+        - [ libvirt, qemu, vagrant ]
         - "{{ vagrant_engine_users }}"
 
     # Allow users in vagrant group to manage libvirt without authentication.

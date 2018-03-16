@@ -7,6 +7,8 @@
     - role: amtega.vagrant_presets
     - role: amtega.vagrant_sandbox
       vagrant_sandbox_state: started
+  tags:
+    - sandbox
 
 - name: test vagrant_engine role
   hosts: vagrant_sandbox_vms
@@ -36,3 +38,5 @@
   roles:
     - role: amtega.vagrant_sandbox
       vagrant_sandbox_state: absent
+  tags:
+    - sandbox
