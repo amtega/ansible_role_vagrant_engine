@@ -2,49 +2,19 @@
 # Configuration tasks
 
 - block:
-    - name: setup groups
+    - name: setup vagrant group
       group:
-        name: "{{ item }}"
+        name: vagrant
         state: present
         system: yes
-      with_items:
-        - libvirt
-        - qemu
-        - vagrant
 
-    - name: add users to groups
+    - name: add users to vagrant group
       user:
         append: yes
-        groups: '{{ item[0] }}'
+        groups: vagrant
         state: present
-        name: '{{ item[1] }}'
-      with_nested:
-        - [ libvirt, qemu, vagrant ]
-        - "{{ vagrant_engine_users }}"
-
-    # Allow users in vagrant group to manage libvirt without authentication.
-    # Details in https://access.redhat.com/documentation/en-us/
-    #   red_hat_container_development_kit/2.0/html-single/installation_guide/
-    #   #idm139695093806512
-
-    - name: allow vagrant group users to start and stop vagrant boxes
-      template:
-        src: 10-vagrant-libvirt.rules.j2
-        dest: "{{ dest_dir }}/10-vagrant-libvirt.rules"
-        owner: root
-        group: root
-        mode: 0644
-        backup: yes
-      vars:
-        dest_dir: >-
-          {{ (ansible_distribution | lower in ["rhel", "centos"]
-              and ansible_distribution_major_version == "6")
-             | ternary(
-                 "/etc/polkit-1/localauthority.conf.d",
-                 "/etc/polkit-1/rules.d") }}
-      notify:
-        - restart libvirtd
-        - restart polkit
+        name: '{{ item }}'
+      with_items: "{{ vagrant_engine_users }}"
   tags:
     - role::vagrant_engine
     - role::vagrant_engine::configure
