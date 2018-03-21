@@ -4,7 +4,7 @@ This is an [Ansible](http://www.ansible.com) role to setup vagrant engine.
 
 ## Requirements
 
-- [Ansible 2.4+](http://docs.ansible.com/ansible/latest/intro_installation.html)
+[Ansible 2.4+](http://docs.ansible.com/ansible/latest/intro_installation.html)
 
 ## Role Variables
 
