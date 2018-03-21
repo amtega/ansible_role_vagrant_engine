@@ -1,9 +1,0 @@
-{{ ansible_managed | comment }}
-
-polkit.addRule(function(action, subject) {
-  if ((action.id == "org.libvirt.unix.manage"
-    || action.id == "org.libvirt.unix.monitor")
-    && subject.isInGroup("vagrant")) {
-    return polkit.Result.YES;
-  }
-});
