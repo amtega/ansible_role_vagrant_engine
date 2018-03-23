@@ -6,13 +6,13 @@
       package:
         name: "{{ item }}"
         state: present
-      with_items: "{{ vagrant_engine_extra_packages[distro_packages_key] }}"
+      with_items: "{{ vagrant_engine_dependency_packages[distro_packages_key] }}"
       vars:
         distro_packages_key: >-
           {{ ansible_distribution
              | lower + "_" + ansible_distribution_major_version }}
 
-    - name: get vagrant lastest pacakges urls
+    - name: get vagrant latest pacakges urls
       uri:
         url: "{{ vagrant_engine_download_url }}"
         return_content: yes
