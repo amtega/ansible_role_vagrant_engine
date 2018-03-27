@@ -1,5 +1,5 @@
 ---
-# Configuration tasks
+# Configuration tasks common to all distros
 
 - block:
     - name: setup vagrant group
