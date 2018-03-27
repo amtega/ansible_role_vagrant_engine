@@ -1,0 +1,34 @@
+---
+# Install tasks
+
+- block:
+    - include_tasks: "{{ role_path }}/tasks/install/common.yml"
+
+    - include_tasks: "{{ install_playbook }}"
+      vars:
+        install_playbook: >-
+          {{ role_path }}/tasks/install/{{ ansible_os_family | lower }}.yml
+        arch_suffix: >-
+          {{ (ansible_architecture == "x86_64") | ternary("x86_64", "i686") }}
+        packages_deb: >-
+          {{ get_latest_package_result.content.splitlines()
+             | select("search", arch_suffix + "\.deb")
+             | map("regex_replace", ".*(https:.*\.deb).*", "\1")
+             | list }}
+        packages_rpm: >-
+          {{ get_latest_package_result.content.splitlines()
+             | select("search", arch_suffix + "\.rpm")
+             | map("regex_replace", ".*(https:.*\.rpm).*", "\1")
+             | list }}
+        current_version: "{{ vagrant_engine_version_result.stdout }}"
+        last_version: >-
+          {{ packages
+             | first
+             | regex_replace(".*/vagrant/(.*)/vagrant.*","\1") }}
+        packages: >-
+          {{ (ansible_distribution in ["centos", "rhel"])
+             | ternary(packages_rpm, packages_deb) }}
+  tags:
+    - role::vagrant_engine
+    - role::vagrant_engine::packages
+    - role::vagrant_engine::install
