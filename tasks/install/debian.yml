@@ -8,9 +8,6 @@
   apt:
     deb: "{{ package }}"
     state: present
-  when: >-
-    current_version | length == 0
-    or current_version | version_compare(last_version, ">=")
   with_items: "{{ packages }}"
   loop_control:
     loop_var: package
