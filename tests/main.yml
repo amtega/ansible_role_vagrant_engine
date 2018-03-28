@@ -47,7 +47,7 @@
       assert:
         that: >-
           {{ vagrant_status_result.stdout
-             | search("id.*name.*provider.*state") }}
+             is search("id.*name.*provider.*state") }}
   tags:
     - idempotence
 
