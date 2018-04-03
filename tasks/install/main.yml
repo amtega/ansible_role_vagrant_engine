@@ -7,7 +7,7 @@
     - include_tasks: "{{ install_playbook }}"
       when: >-
         current_version | length == 0
-        or current_version is version_compare(last_version, ">=")
+        or current_version is version(last_version, ">=")
       vars:
         install_playbook: >-
           {{ role_path }}/tasks/install/{{ ansible_os_family | lower }}.yml
