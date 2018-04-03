@@ -21,6 +21,8 @@
         box: debian_9
         hostname: debian-9
         ansible_become: true
+  tags:
+    - sandbox
 
 - name: run idempotence test
   hosts: localhost
@@ -28,7 +30,7 @@
     - role: amtega.vagrant_sandbox
       vagrant_sandbox_state: started
   tags:
-        - sandbox
+    - sandbox
 
 - name: test vagrant_engine role
   hosts: vagrant_sandbox_vms
