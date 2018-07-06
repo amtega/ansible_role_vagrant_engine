@@ -10,9 +10,13 @@
         or current_version is version(last_version, ">=")
       vars:
         install_playbook: >-
-          {{ role_path }}/tasks/install/{{ ansible_os_family | lower }}.yml
+          {{ role_path
+             + "/tasks/install/"
+             + ansible_facts.os_family | lower
+             + ".yml"
         arch_suffix: >-
-          {{ (ansible_architecture == "x86_64") | ternary("x86_64", "i686") }}
+          {{ (ansible_facts.architecture == "x86_64")
+             | ternary("x86_64", "i686") }}
         packages_deb: >-
           {{ get_latest_package_result.content.splitlines()
              | select("search", arch_suffix + "\.deb")
@@ -25,7 +29,8 @@
              | list }}
         current_version: "{{ vagrant_engine_version_result.stdout }}"
         packages: >-
-          {{ (ansible_distribution | lower in ["centos", "fedora", "rhel"])
+          {{ (ansible_facts.distribution | lower
+              in ["centos", "fedora", "rhel"])
              | ternary(packages_rpm, packages_deb) }}
         last_version: >-
           {{ packages
