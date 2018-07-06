@@ -5,11 +5,11 @@
   hosts: localhost
   roles:
     - role: amtega.vagrant_presets
-      vagrant_presets_images_json_query: >-
+      vagrant_presets_boxes_json_query: >-
         [? (starts_with(name, `centos-7`))
            || starts_with(name, `debian-9`)
-           || starts_with(name, `fedora-26`)
-           || starts_with(name, `fedora-27`) ]
+           || starts_with(name, `fedora-27`)
+           || starts_with(name, `fedora-28`) ]
   tags:
     - sandbox
 
@@ -27,7 +27,7 @@
     - role: amtega.vagrant_engine
       vagrant_engine_users:
         - root
-        - "{{ ansible_user_id }}"
+        - "{{ ansible_facts.user_id }}"
   tasks:
     - name: get vagrant global status
       shell: vagrant global-status
