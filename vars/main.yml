@@ -12,7 +12,7 @@ vagrant_engine_supported_distributions:
 # Supported distributions versions
 
 vagrant_engine_supported_versions:
-  centos: 6
+  centos: 7
   debian: 9
   fedora: 27
   rhel: 7
