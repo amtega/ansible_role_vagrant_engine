@@ -13,7 +13,7 @@
           {{ role_path
              + "/tasks/install/"
              + ansible_facts.os_family | lower
-             + ".yml"
+             + ".yml" }}
         arch_suffix: >-
           {{ (ansible_facts.architecture == "x86_64")
              | ternary("x86_64", "i686") }}
