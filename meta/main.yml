@@ -2,6 +2,7 @@
 # Role dependencies
 
 galaxy_info:
+  role_name: vagrant_engine
   author: Daniel Sánchez Fábregas / Juan Antonio Valiño García
   description: Setup vagrant engine
   company: AMTEGA - Xunta de Galicia
