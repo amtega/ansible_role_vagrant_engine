@@ -14,7 +14,7 @@ vagrant_engine_supported_distributions:
 vagrant_engine_supported_versions:
   centos: 7
   debian: 9
-  fedora: 27
+  fedora: 28
   rhel: 7
 
 # Download settings
@@ -27,6 +27,6 @@ vagrant_engine_download_validate_certs: no
 vagrant_engine_dependency_packages:
   debian_9: []
   centos_7: []
-  fedora_27: []
   fedora_28: []
+  fedora_29: []
   rhel_7: []
