@@ -2,25 +2,15 @@
 # Install tasks common to all distros
 
 - block:
-    - name: install vagrant dependency packages
-      package:
-        name: "{{ vagrant_engine_dependency_packages[distro_packages_key] }}"
-        state: present
-      vars:
-        distro_packages_key: >-
-          {{ ansible_facts.distribution | lower
-             + "_"
-             + ansible_facts.distribution_major_version }}
-
-    - name: get vagrant latest pacakges urls
+    - name: Get vagrant latest pacakges urls
       uri:
         url: "{{ vagrant_engine_download_url }}"
         return_content: yes
         validate_certs: "{{ vagrant_engine_download_validate_certs }}"
       register: get_latest_package_result
 
-    - name: get installed vagrant version
-      shell: vagrant -v
+    - name: Get installed vagrant version
+      command: vagrant -v
       failed_when: false
       changed_when: false
       register: vagrant_engine_version_result

@@ -1,32 +1,7 @@
 ---
 # Role variables
 
-# Supported distributions
-
-vagrant_engine_supported_distributions:
-  - centos
-  - debian
-  - fedora
-  - rhel
-
-# Supported distributions versions
-
-vagrant_engine_supported_versions:
-  centos: 7
-  debian: 9
-  fedora: 28
-  rhel: 7
-
 # Download settings
 
 vagrant_engine_download_url: https://www.vagrantup.com/downloads.html
 vagrant_engine_download_validate_certs: no
-
-# Dependency packages
-
-vagrant_engine_dependency_packages:
-  debian_9: []
-  centos_7: []
-  fedora_28: []
-  fedora_29: []
-  rhel_7: []

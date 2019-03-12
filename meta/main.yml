@@ -3,25 +3,34 @@
 
 galaxy_info:
   role_name: vagrant_engine
-  author: Daniel Sánchez Fábregas / Juan Antonio Valiño García
+  author: Juan Antonio Valiño García / Daniel Sánchez Fábregas
   description: Setup vagrant engine
   company: AMTEGA - Xunta de Galicia
   license: GPLv3 or EUPL
-  min_ansible_version: 2.6
+  min_ansible_version: 2.7
   platforms:
-  - name: Fedora
-    versions:
-      - 27
-      - 28
-  - name: EL
-    versions:
-      - 7
-  - name: Debian
-    versions:
-      - stretch
+    - name: Debian
+      versions:
+        - stretch
+    - name: EL
+      versions:
+        - 7
+    - name: Fedora
+      versions:
+        - 27
+        - 28
   galaxy_tags:
     - system
     - vagrant
     - virtualization
 
-dependencies: []
+dependencies:
+  - role: amtega.check_platform
+    vars:
+      check_platform_distributions:
+        centos: 7
+        debian: 9
+        fedora: 27
+        rhel: 7
+    tags:
+      - role::vagrant_engine

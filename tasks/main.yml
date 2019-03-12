@@ -1,19 +1,13 @@
 ---
 # Role tasks
 
-- name: sanity checks
-  import_tasks: check/main.yml
-  tags:
-    - role::vagrant_engine
-    - role::vagrant_engine::check
-
-- name: install vagrant engine
+- name: Install vagrant engine
   include_tasks: install/main.yml
   tags:
     - role::vagrant_engine
     - role::vagrant_engine::install
 
-- name: configure vagrant engine
+- name: Configure vagrant engine
   include_tasks: configure/main.yml
   tags:
     - role::vagrant_engine

@@ -1,7 +1,7 @@
 ---
 # Tasks for testing role
 
-- name: configure vagrant sandbox environment
+- name: Configure vagrant sandbox environment
   hosts: localhost
   roles:
     - role: amtega.vagrant_presets
@@ -13,7 +13,7 @@
   tags:
     - sandbox
 
-- name: run idempotence test
+- name: Run idempotence test
   hosts: localhost
   roles:
     - role: amtega.vagrant_sandbox
@@ -21,7 +21,7 @@
   tags:
     - sandbox
 
-- name: test vagrant_engine role
+- name: Test vagrant_engine role
   hosts: vagrant_sandbox_vms
   roles:
     - role: amtega.vagrant_engine
@@ -29,12 +29,12 @@
         - root
         - "{{ ansible_facts.user_id }}"
   tasks:
-    - name: get vagrant global status
+    - name: Get vagrant global status
       shell: vagrant global-status
       register: vagrant_status_result
       changed_when: false
 
-    - name: verify vagrant global status
+    - name: Verify vagrant global status
       assert:
         that: >-
           {{ vagrant_status_result.stdout
@@ -42,7 +42,7 @@
   tags:
     - idempotence
 
-- name: cleanup vagrant sandbox
+- name: Cleanup vagrant sandbox
   hosts: localhost
   roles:
     - role: amtega.vagrant_sandbox

@@ -1,7 +1,7 @@
 ---
 # Install tasks for Red Hat
 
-- name: install vagrant packages
+- name: Install vagrant packages
   package:
     name: "{{ packages }}"
     state: present

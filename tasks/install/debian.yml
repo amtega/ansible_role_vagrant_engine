@@ -4,7 +4,7 @@
 # Ansible package module does not suppport http(s) remote packages. So we use
 # apt module
 
-- name: install vagrant packages
+- name: Install vagrant packages
   apt:
     deb: "{{ package }}"
     state: present
