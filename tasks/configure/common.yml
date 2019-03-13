@@ -2,13 +2,13 @@
 # Configuration tasks common to all distros
 
 - block:
-    - name: setup vagrant group
+    - name: Setup vagrant group
       group:
         name: vagrant
         state: present
         system: yes
 
-    - name: add users to vagrant group
+    - name: Add users to vagrant group
       user:
         append: yes
         groups: vagrant

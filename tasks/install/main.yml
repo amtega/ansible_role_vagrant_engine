@@ -27,7 +27,10 @@
              | select("search", arch_suffix + "\.rpm")
              | map("regex_replace", ".*(https:.*\.rpm).*", "\1")
              | list }}
-        current_version: "{{ vagrant_engine_version_result.stdout }}"
+        current_version: >-
+          {{ vagrant_engine_version_result.stdout
+             | default("")
+             | regex_replace(".agrant (.*)", "\1") }}
         packages: >-
           {{ (ansible_facts.distribution | lower
               in ["centos", "fedora", "rhel"])
