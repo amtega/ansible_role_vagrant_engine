@@ -33,7 +33,7 @@
              | regex_replace(".agrant (.*)", "\1") }}
         packages: >-
           {{ (ansible_facts.distribution | lower
-              in ["centos", "fedora", "rhel"])
+              in ["centos", "fedora", "redhat"])
              | ternary(packages_rpm, packages_deb) }}
         last_version: >-
           {{ packages
