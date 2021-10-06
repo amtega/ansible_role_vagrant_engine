@@ -1,0 +1,16 @@
+---
+
+- name: Verify
+  hosts: molecule_hosts
+  gather_facts: no
+  tasks:
+    - name: Get vagrant global status
+      shell: vagrant global-status
+      register: vagrant_status_result
+      changed_when: false
+
+    - name: Verify vagrant global status
+      assert:
+        that: >-
+          {{ vagrant_status_result.stdout
+             is search("id.*name.*provider.*state") }}

@@ -1,6 +1,20 @@
 ---
 # Install tasks for debian
 
+- name: Import apt key certificate
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+    validae_certs: no
+
+- name: Configure repository
+  apt_repository:
+    repo: >-
+      deb [arch=amd64] https://apt.releases.hashicorp.com
+      {{ ansible_facts.ansible_distribution_release }} main
+    state: present
+    filename: hashicorp
+
 # Ansible package module does not suppport http(s) remote packages. So we use
 # apt module
 

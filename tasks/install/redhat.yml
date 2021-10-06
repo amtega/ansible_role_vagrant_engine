@@ -1,6 +1,11 @@
 ---
 # Install tasks for Red Hat
 
+- name: Configure repository
+  get_url:
+    url: "{{ vagrant_engine_yum_repo }}"
+    dest: "{{ vagrant_engine_yum_repo_file }}"
+
 - name: Install vagrant packages
   package:
     name: "{{ packages }}"

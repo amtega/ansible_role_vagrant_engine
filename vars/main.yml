@@ -5,3 +5,14 @@
 
 vagrant_engine_download_url: https://www.vagrantup.com/downloads.html
 vagrant_engine_download_validate_certs: no
+
+# Hashicorp repositories for RedHat family
+_vagrant_engine_repo_dict:
+  fedora: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+  redhat: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+
+vagrant_engine_yum_repo_url: >-
+  {{ _vagrant_engine_repo_dict[ansible_facts.distribution | lower]
+     | default(_vagrant_engine_repo_dict[ansible_facts.os_family | lower]) }}
+
+vagrant_engine_yum_repo_file: /etc/yum.repos.d/hashicorp.repo
