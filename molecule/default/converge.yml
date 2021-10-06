@@ -4,4 +4,4 @@
   hosts: molecule_hosts
   gather_facts: no
   roles:
-    - amtega.su
+    - amtega.vagrant_engine

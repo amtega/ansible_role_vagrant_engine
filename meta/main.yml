@@ -3,6 +3,7 @@
 
 galaxy_info:
   role_name: vagrant_engine
+  namespace: amtega
   author: Juan Antonio Valiño García / Daniel Sánchez Fábregas
   description: Setup vagrant engine
   company: AMTEGA - Xunta de Galicia
