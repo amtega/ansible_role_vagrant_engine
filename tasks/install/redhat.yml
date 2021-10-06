@@ -1,9 +1,13 @@
 ---
 # Install tasks for Red Hat
+- name: Import GPG key
+  rpm_key:
+    state: present
+    key: "{{ vagrant_engine_hashicorp_gpg[ansible_facts.os_family | lower] }}"
 
 - name: Configure repository
   get_url:
-    url: "{{ vagrant_engine_yum_repo }}"
+    url: "{{ vagrant_engine_yum_repo_url }}"
     dest: "{{ vagrant_engine_yum_repo_file }}"
 
 - name: Install vagrant packages

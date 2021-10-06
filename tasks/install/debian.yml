@@ -3,7 +3,7 @@
 
 - name: Import apt key certificate
   apt_key:
-    url: https://apt.releases.hashicorp.com/gpg
+    url: "{{ vagrant_engine_hashicorp_gpg }}"
     state: present
     validae_certs: no
 

@@ -16,3 +16,7 @@ vagrant_engine_yum_repo_url: >-
      | default(_vagrant_engine_repo_dict[ansible_facts.os_family | lower]) }}
 
 vagrant_engine_yum_repo_file: /etc/yum.repos.d/hashicorp.repo
+
+vagrant_engine_hashicorp_gpg:
+  debian: https://apt.releases.hashicorp.com/gpg
+  redhat: https://rpm.releases.hashicorp.com/gpg
