@@ -29,4 +29,4 @@
   roles:
     - role: amtega.vagrant_engine
       vagrant_engine_users: "{{ users.split(',') | map('trim') | list }}"
-      become: true
+      become: yes
