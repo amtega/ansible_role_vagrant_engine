@@ -26,7 +26,13 @@
       default: "root,{{ lookup('env','USER') }}"
       private: no
 
+    - name: delete_vagrant_dir
+      prompt: Do you want delete ~/.vagrant.d directory?
+      default: no
+      private: no
+
   roles:
     - role: amtega.vagrant_engine
       vagrant_engine_users: "{{ users.split(',') | map('trim') | list }}"
+      vagrant_engine_clean_dir: "{{ delete_vagrant_dir }}"
       become: yes
