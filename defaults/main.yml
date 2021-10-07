@@ -17,4 +17,4 @@ vagrant_engine_allow_downgade: yes
 
 # Flag to install libvirtd and vagrant-libvirt plugin.
 # Only avaliable for RedHat O.S. family
-vagrant_engine_configure_libvirt: yes
+vagrant_engine_configure_libvirt: no
