@@ -5,3 +5,12 @@
 # to manage vagrant without being root
 
 vagrant_engine_users: []
+
+# Flag to indicate if you want delete .vagran.d directory before install
+vagrant_engine_clean_dir: no
+
+# Can define a vagrant version to isntall
+# vagrant_engine_version:
+
+# Flag to allow downgrade packages. Only avaliable for RedHat O.S. family
+vagrant_engine_allow_downgade: yes

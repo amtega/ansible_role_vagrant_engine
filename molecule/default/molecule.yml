@@ -12,6 +12,13 @@ driver:
   name: docker
 lint: "${MOLECULE_SCENARIO_DIRECTORY}/linters.sh"
 platforms:
+  - name: "debian-${INSTANCE_UUID:-1}"
+    image: debian:latest
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - molecule_hosts
+      - molecule_hosts_debian
   - name: "centos7-${INSTANCE_UUID:-1}"
     image: centos:7
     dockerfile: Dockerfile.systemd.j2

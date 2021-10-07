@@ -47,5 +47,6 @@ This role is distributed in the hope that it will be useful, but WITHOUT ANY WAR
 
 ## Author Information
 
+- José Enrique Mourón Regueira
 - Juan Antonio Valiño García.
 - Daniel Sánchez Fábregas.
