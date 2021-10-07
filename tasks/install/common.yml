@@ -11,8 +11,8 @@
 
     - name: Get installed vagrant version
       command: vagrant -v
-      failed_when: false
-      changed_when: false
+      failed_when: no
+      changed_when: no
       register: vagrant_engine_version_result
   tags:
     - role::vagrant_engine
