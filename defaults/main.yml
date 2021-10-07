@@ -14,3 +14,7 @@ vagrant_engine_clean_dir: no
 
 # Flag to allow downgrade packages. Only avaliable for RedHat O.S. family
 vagrant_engine_allow_downgade: yes
+
+# Flag to install libvirtd and vagrant-libvirt plugin.
+# Only avaliable for RedHat O.S. family
+vagrant_engine_configure_libvirt: yes
