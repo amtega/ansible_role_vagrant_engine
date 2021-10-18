@@ -1,0 +1,5 @@
+---
+
+exclude_paths:
+  - meta
+  - defaults/main.yml

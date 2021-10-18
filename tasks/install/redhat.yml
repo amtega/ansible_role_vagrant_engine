@@ -1,10 +1,30 @@
 ---
 # Install tasks for Red Hat
-
-- name: Install vagrant packages
-  package:
-    name: "{{ packages }}"
+- name: Import GPG key
+  rpm_key:
     state: present
+    key: "{{ vagrant_engine_hashicorp_gpg[ansible_facts.os_family | lower] }}"
+  register: import_gpg_result
+
+- name: Configure repository
+  get_url:
+    url: "{{ vagrant_engine_yum_repo_url }}"
+    dest: "{{ vagrant_engine_yum_repo_file }}"
+
+- name: Clean vagrant user dir
+  file:
+    path: "{{ '/home/'' + user + /.vagrant.d"
+    state: absent
+  when: vagrant_engine_clean_dir
+  loop: "{{ vagrant_engine_users }}"
+  loop_control:
+    loop_var: user
+
+- name: Install vagrant package
+  yum:
+    name: "{{ package_to_install }}"
+    state: present
+    allow_downgrade: "{{ vagrant_engine_allow_downgade }}"
   tags:
     - role::vagrant_engine
     - role::vagrant_engine::packages
