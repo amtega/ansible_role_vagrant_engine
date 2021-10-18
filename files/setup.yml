@@ -32,13 +32,14 @@
       private: no
 
     - name: install_libvirt_plugin
-      prompt: Do you want delete ~/.vagrant.d directory?
+      prompt: Do you to setup libvirt plguin?
       default: no
       private: no
 
   roles:
     - role: amtega.vagrant_engine
-      vagrant_engine_users: "{{ users.split(',') | map('trim') | list }}"
-      vagrant_engine_clean_dir: "{{ delete_vagrant_dir }}"
-      vagrant_engine_configure_libvirt: "{{ install_libvirt_plugin }}"
       become: yes
+      vars:
+        vagrant_engine_users: "{{ users.split(',') | map('trim') | list }}"
+        vagrant_engine_clean_user_dir: "{{ delete_vagrant_dir }}"
+        vagrant_engine_configure_libvirt: "{{ install_libvirt_plugin }}"
