@@ -4,15 +4,15 @@
 galaxy_info:
   role_name: vagrant_engine
   namespace: amtega
-  author: Juan Antonio Valiño García / Daniel Sánchez Fábregas
+  author: >-
+    José Enrique Mourón Regueira
+    / Juan Antonio Valiño García
+    / Daniel Sánchez Fábregas
   description: Setup vagrant engine
   company: AMTEGA - Xunta de Galicia
   license: GPLv3 or EUPL
   min_ansible_version: 2.10
   platforms:
-    - name: Debian
-      versions:
-        - 11
     - name: EL
       versions:
         - 7
@@ -30,7 +30,6 @@ dependencies:
   - role: amtega.check_platform
     vars:
       check_platform_distributions:
-        debian: 11
         centos: 7
         fedora: 33
         redhat: 7

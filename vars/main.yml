@@ -6,19 +6,21 @@
 vagrant_engine_download_url: https://releases.hashicorp.com/vagrant/
 vagrant_engine_download_validate_certs: no
 
-# Hashicorp repositories for RedHat family
-_vagrant_engine_repo_dict:
-  fedora: "https://rpm.releases.hashicorp.com/fedora/hashicorp.repo"
-  redhat: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+# Hashicorp repositories for Red Hat
+
+vagrant_engine_repo_map:
+  fedora: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+  redhat: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 
 vagrant_engine_yum_repo_url: >-
-  {{ _vagrant_engine_repo_dict[ansible_facts.distribution | lower]
-     | default(_vagrant_engine_repo_dict[ansible_facts.os_family | lower]) }}
+  {{ vagrant_engine_repo_map[ansible_facts.distribution | lower]
+     | default(vagrant_engine_repo_map
+               [ansible_facts.os_family | lower]) }}
 
 vagrant_engine_yum_repo_file: /etc/yum.repos.d/hashicorp.repo
 
-vagrant_engine_hashicorp_gpg:
-  debian: https://apt.releases.hashicorp.com/gpg
+vagrant_engine_hashicorp_gpg_map:
+  fedora: https://rpm.releases.hashicorp.com/gpg
   redhat: https://rpm.releases.hashicorp.com/gpg
 
 # Vagrant-libvirt plugin related vars
@@ -36,3 +38,30 @@ vagrant_engine_libvirt_dependencies:
   - ruby
   - ruby-devel
   - make
+
+# Vagrant package to install
+
+vagrant_engine_package_to_install: >-
+  vagrant-{{ vagrant_engine_version_to_install }}
+
+# Versions
+
+vagrant_engine_current_version: >-
+  {{ vagrant_engine_version_result.stdout
+     | default("")
+     | regex_replace(".agrant (.*)", "\1") }}
+
+vagrant_engine_last_version: >-
+  {{ ((get_latest_package_result.content.splitlines()
+     | select("search", "vagrant_")
+     | list
+     | first).split("_")[1]).split("<")[0] }}
+
+vagrant_engine_version_to_install: >-
+  {{ (vagrant_engine_version is defined )
+     | ternary(vagrant_engine_version, vagrant_engine_last_version) }}
+
+# Install playbook
+
+vagrant_engine_install_playbook: >-
+  {{ role_path }}/tasks/install/{{ ansible_facts.os_family | lower }}.yml
