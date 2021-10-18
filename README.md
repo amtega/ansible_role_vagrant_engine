@@ -31,9 +31,9 @@ Tests are based on [molecule with docker containers](https://molecule.readthedoc
 
 ```shell
 cd amtega.vagrant_engine
-```
 
-molecule test
+molecule test --all
+```
 
 ## License
 

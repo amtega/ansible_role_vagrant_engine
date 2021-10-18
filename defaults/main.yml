@@ -6,15 +6,19 @@
 
 vagrant_engine_users: []
 
-# Flag to indicate if you want delete .vagran.d directory before install
-vagrant_engine_clean_dir: no
+# Flag to indicate if you want delete .vagran.d user directory before install
 
-# Can define a vagrant version to isntall
+vagrant_engine_clean_user_dir: no
+
+#Vagrant version to install
+
 # vagrant_engine_version:
 
-# Flag to allow downgrade packages. Only avaliable for RedHat O.S. family
+# Flag to allow downgrade packages. Only avaliable for RedHat OS family
+
 vagrant_engine_allow_downgade: yes
 
 # Flag to install libvirtd and vagrant-libvirt plugin.
-# Only avaliable for RedHat O.S. family
+# Only avaliable for RedHat OS family
+
 vagrant_engine_configure_libvirt: no
