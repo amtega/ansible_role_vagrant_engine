@@ -12,8 +12,12 @@ vagrant_engine_repo_map:
   fedora: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
   redhat: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 
+vagrant_engine_yum_repo_distro: >-
+  {{ (ansible_facts.distribution | lower != "fedora")
+     | ternary("redhat", "fedora")  }}
+
 vagrant_engine_yum_repo_url: >-
-  {{ vagrant_engine_repo_map[ansible_facts.distribution | lower]
+  {{ vagrant_engine_repo_map[vagrant_engine_yum_repo_distro]
      | default(vagrant_engine_repo_map
                [ansible_facts.os_family | lower]) }}
 
