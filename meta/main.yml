@@ -33,5 +33,7 @@ dependencies:
         centos: 7
         fedora: 34
         redhat: 7
-    tags:
-      - role::vagrant_engine
+
+  - role: amtega.proxy_client
+    vars:
+      proxy_client_permanent: no
