@@ -40,8 +40,7 @@
       yum:
         name: "{{ vagrant_engine_package_to_install }}"
         state: present
-        allow_downgrade: "{{ vagrant_engine_allow_downgade }}"
-
+        allow_downgrade: "{{ vagrant_engine_allow_downgade }}"  
   tags:
     - role::vagrant_engine
     - role::vagrant_engine::packages

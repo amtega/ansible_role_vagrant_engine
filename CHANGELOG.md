@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2022-05-10
+### Fixed
+- Integrated proxy_client role.
+
 ## [1.6.3] - 2022-04-04
 ### Fixed
 - Fixed repo url.
